@@ -235,6 +235,7 @@ h2::after {
 /* Mission Highlights Section (No change) */
 .mission-highlights-section {
     background-color: #0f0f2a;
+    cursor: pointer;
 }
 
 .mission-grid {
@@ -257,6 +258,7 @@ h2::after {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    cursor: pointer;
 }
 
 .mission-item:hover {
