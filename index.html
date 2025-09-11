@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function alert(){
+            swal("Sorry", "The video is not avilable", "error");
+        }
+    </script>
 </head>
 <body>
 
@@ -36,7 +42,7 @@
                 <p>Explore the depths of the universe and learn its secrets with the latest technology.</p>
                 <div class="hero-cta-buttons">
                     <a href="#h" class="btn-primary">Start Discovering</a>
-                    <a href="#" class="btn-secondary">Watch video<i class="fas fa-play"></i></a>
+                    <a href="#" class="btn-secondary" onclick="alert()">Watch video<i class="fas fa-play"></i></a>
                 </div>
             </div>
             <div class="hero-planet-overlay"></div>
