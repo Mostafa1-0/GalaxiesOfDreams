@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>Space Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html,body{
+      height:100%;
+      margin:0;
+      background:#000;
+      font-family:Arial, sans-serif;
+      color:white;
+    }
+    #viewer{
+      width:100vw;
+      height:100vh;
+    }
+    #controls{
+      position:absolute;
+      top:15px;
+      left:15px;
+      z-index:2000;
+      background:rgba(0,0,0,0.5);
+      padding:8px 12px;
+      border-radius:10px;
+      box-shadow:0 0 8px rgba(255,255,255,0.2);
+    }
+    #controls button{
+      background:#222;
+      color:white;
+      border:none;
+      padding:6px 12px;
+      margin:2px;
+      border-radius:6px;
+      cursor:pointer;
+    }
+    #controls button:hover{
+      background:#444;
+    }
+    #zoom-level{
+      margin-top:6px;
+      font-size:14px;
+      color:#ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <button onclick="viewer.viewport.zoomBy(1.2);viewer.viewport.applyConstraints();">🔍 +</button>
+    <button onclick="viewer.viewport.zoomBy(0.8);viewer.viewport.applyConstraints();">🔍 -</button>
+    <button onclick="viewer.setFullScreen(!viewer.isFullPage());">⛶Full screen</button>
+    <div id="zoom-level">Zoom: 100%</div>
+  </div>
+  <div id="viewer"></div>
+
+  <!-- مكتبة OpenSeadragon -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
+
+  <script>
+    // إعداد العارض
+    const viewer = OpenSeadragon({
+      id: "viewer",
+      prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+      
+      // 🔹 لو معاك DZI:
+      // tileSources: "space.dzi",
+
+      // 🔹 لو صورة واحدة عادية JPG/PNG:
+      tileSources: {
+        type: 'image',
+        url: 'https://images.pexels.com/photos/47367/full-moon-moon-bright-sky-47367.jpeg' // هنا تحط مسار صورتك
+      },
+
+      showNavigator: true,
+      navigatorPosition: "BOTTOM_RIGHT",
+      showRotationControl: true,
+      gestureSettingsMouse: {
+        scrollToZoom: true,
+        clickToZoom: false
+      },
+      animationTime: 0.6,
+      maxZoomPixelRatio: 3,
+      constrainDuringPan: true,
+    });
+
+    // تحديث نسبة الزوم
+    viewer.addHandler("zoom", function(){
+      const zoom = viewer.viewport.getZoom();
+      const percentage = (zoom * 100).toFixed(0);
+      document.getElementById("zoom-level").innerText = "Zoom: " + percentage + "%";
+    });
+  </script>
+</body>
+</html>
