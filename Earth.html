@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="utf-8">
-  <title>Space Explorer</title>
+  <title>Space Explorer - Earth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     html,body{
@@ -62,16 +62,11 @@
     const viewer = OpenSeadragon({
       id: "viewer",
       prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
-      
-      // 🔹 لو معاك DZI:
-      // tileSources: "space.dzi",
-
-      // 🔹 لو صورة واحدة عادية JPG/PNG:
+      // صورة الأرض عالية الدقة
       tileSources: {
         type: 'image',
-        url: 'C:\Users\dell\OneDrive\Documents\Space_proto\Earth1.jpg' // هنا تحط مسار صورتك
+        url: 'https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74192/world.topo.bathy.200412.3x5400x2700.jpg'
       },
-
       showNavigator: true,
       navigatorPosition: "BOTTOM_RIGHT",
       showRotationControl: true,
