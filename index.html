@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script>
         function alert(){
             swal("Sorry", "The video is not avilable", "error");
@@ -84,6 +86,64 @@
                 </div>
                 <div class="explore-image-column glass-effect">
                     <div id="openseadragon-viewer" class="openseadragon-viewer"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-3d-section" id="3d-explorer">
+            <h2>3D Space Explorer</h2>
+            <p class="section-description">Navigate through our solar system in real-time 3D. Click on planets to learn more.</p>
+            
+            <div class="space-3d-container">
+                <div id="space-3d-canvas-wrapper" class="glass-effect">
+                    <canvas id="space-3d-canvas"></canvas>
+                    <div id="loading-screen" class="loading-screen">
+                        <div class="loading-spinner"></div>
+                        <p>Loading Solar System...</p>
+                    </div>
+                </div>
+                
+                <div class="space-3d-controls glass-effect">
+                    <h3>Controls</h3>
+                    <div class="control-item">
+                        <label for="orbit-speed">Orbit Speed:</label>
+                        <input type="range" id="orbit-speed" min="0" max="5" step="0.1" value="1">
+                        <span id="speed-value">1x</span>
+                    </div>
+                    <div class="control-item">
+                        <label>
+                            <input type="checkbox" id="show-labels" checked>
+                            Show Planet Labels
+                        </label>
+                    </div>
+                    <div class="control-item">
+                        <label>
+                            <input type="checkbox" id="show-orbits" checked>
+                            Show Orbits
+                        </label>
+                    </div>
+                    <button id="reset-camera" class="btn-primary">Reset Camera</button>
+                </div>
+
+                <div id="planet-info" class="planet-info glass-effect" style="display: none;">
+                    <button class="close-btn">&times;</button>
+                    <h3 id="planet-name"></h3>
+                    <div id="planet-details"></div>
+                </div>
+            </div>
+
+            <div class="space-3d-instructions">
+                <div class="instruction-item glass-effect">
+                    <i class="fas fa-mouse"></i>
+                    <p>Drag to rotate</p>
+                </div>
+                <div class="instruction-item glass-effect">
+                    <i class="fas fa-search-plus"></i>
+                    <p>Scroll to zoom</p>
+                </div>
+                <div class="instruction-item glass-effect">
+                    <i class="fas fa-hand-pointer"></i>
+                    <p>Click planets for info</p>
                 </div>
             </div>
         </section>
@@ -164,5 +224,6 @@
     <script src="script.js">
         
     </script>
+    <script src="space3d.js"></script>
 </body>
 </html>
