@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenSeadragon Demo</title>
+  <style>
+    body { margin: 0; background:#0b1220; color:#fff; font-family: sans-serif; }
+    #viewer { width: 100vw; height: 100vh; }
+    .toolbar { position: fixed; top: 12px; left: 12px; z-index: 10; display: flex; gap: 8px; }
+    .btn { padding: 8px 12px; border-radius: 10px; background:#1e293b; color:#fff; border:1px solid #334155; cursor:pointer }
+    .btn:hover { background:#0f172a; }
+  </style>
+  <!-- مكتبة OpenSeadragon عبر CDN -->
+  <script src="https://unpkg.com/openseadragon@4.1.0/build/openseadragon/openseadragon.min.js"></script>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="btn" id="zoomIn">+</button>
+    <button class="btn" id="zoomOut">−</button>
+    <button class="btn" id="home">Reset</button>
+    <button class="btn" id="full">Fullscreen</button>
+  </div>
+
+  <div id="viewer"></div>
+
+  <script>
+    // ملاحظة: لو عندك صورة عادية كبيرة، تقدر تبدأ بيها كده.
+    // لأداء أعلى مع صور ضخمة جدًا استخدم DZI/Tiles (مشروح تحت).
+    const viewer = OpenSeadragon({
+      id: "viewer",
+      prefixUrl: "https://unpkg.com/openseadragon@4.1.0/build/openseadragon/images/",
+      showNavigator: true,           // خريطة مصغّرة
+      animationTime: 0.8,
+      blendTime: 0.2,
+      maxZoomPixelRatio: 3,
+      visibilityRatio: 1,
+      constrainDuringPan: true,
+      gestureSettingsTouch: { pinchRotate: true },
+      // صورة واحدة عادية:
+      tileSources: {
+        type: 'image',
+        url: 'https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg'
+      }
+    });
+
+    // أزرار تحكّم
+    document.getElementById('zoomIn').onclick  = () => viewer.viewport.zoomBy(1.2) || viewer.viewport.applyConstraints();
+    document.getElementById('zoomOut').onclick = () => viewer.viewport.zoomBy(1/1.2) || viewer.viewport.applyConstraints();
+    document.getElementById('home').onclick    = () => viewer.viewport.goHome();
+    document.getElementById('full').onclick    = () => viewer.setFullScreen(!viewer.isFullPage());
+
+    // مثال Overlay (عنصر HTML فوق الصورة)
+    viewer.addHandler('open', () => {
+      const marker = document.createElement('div');
+      marker.style.width = '16px';
+      marker.style.height = '16px';
+      marker.style.borderRadius = '50%';
+      marker.style.background = 'rgba(0, 200, 255, .9)';
+      marker.style.boxShadow = '0 0 12px rgba(0,200,255,.9)';
+      // الإحداثيات بالنظام النسبي للصورة (0..1):
+      viewer.addOverlay({
+        element: marker,
+        location: new OpenSeadragon.Point(0.5, 0.5) // منتصف الصورة
+      });
+    });
+
+    // أحداث مفيدة
+    viewer.addHandler('zoom',   e => { /* console.log('zoom:', e.zoom); */ });
+    viewer.addHandler('pan',    e => { /* console.log('center:', e.center); */ });
+    viewer.addHandler('canvas-click', e => {
+      const imgPoint = viewer.viewport.pointFromPixel(e.position);
+      // console.log('clicked at (relative):', imgPoint);
+    });
+  </script>
+</body>
+</html>
