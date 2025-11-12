@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Journeys</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;770&family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function alert(){
+            swal("Sorry", "The video is not avilable", "error");
+        }
+        function redirect(){
+           window.open("hi.html", "mozillaTab");
+        }
+        function StillNotFound(){
+            swal("We are sorry", "The feature that you are seeking  is under development right now", "error");
+        }
+        function moon(){
+            window.open("sub.html","mozillaTab")
+        }
+        function Mars(){
+            window.open("Mars.html","mozillaTab")
+        }
+    </script>
+    <style>
+        *{scroll-behavior: smooth;}/* General Body & Typography */
+        body {
+            font-family: 'Oxanium', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0c0c20;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            }
+            .orbits{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .orbit-img{
+                width: 140px;
+            }
+            /* Add to your existing style.css file */
+
+/* General Responsive Styles */
+/* Add this to your existing style.css file */
+
+/* Ensure the main container wraps its content */
+.orbits {
+    display: flex;
+    flex-wrap: wrap; /* This is the key change */
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Adjust the card width for larger screens */
+.mission-item {
+    width: 200px; /* Default width for cards */
+    flex-grow: 1; /* Allows the items to grow to fill space */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 992px) {
+    .mission-item {
+        /* Set a specific width to allow multiple cards per row */
+        width: calc(25% - 20px); /* Adjusts width to fit 4 cards per row with gap */
+        max-width: 250px; /* Prevents cards from getting too big on very wide screens */
+    }
+}
+
+/* Media Query for Tablets */
+@media (max-width: 991px) and (min-width: 768px) {
+    .mission-item {
+        width: calc(33.333% - 20px); /* Fits 3 cards per row */
+    }
+}
+
+/* Media Query for Mobile Phones (already in the previous code but confirmed here) */
+@media (max-width: 767px) {
+    .orbits {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mission-item {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+    </style>
+</head>
+<body>
+   <header>
+        <div class="logo">
+            <i class="fas fa-satellite"></i>
+            <span>COMPANY</span>
+        </div>
+      <nav class="right">
+        <nav>
+            <ul>
+                <li><a href="reciver.html">Services</a></li>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html">Contact</a></li>
+                <li><a href="#" class="btn-outline">Sign In</a></li>
+            </ul>
+        </nav>
+      </nav>
+   </header> 
+   <section class="hero">
+    <h2>Explore what orbit you want to see in details</h2>
+     <div class="orbits">
+                    <div class="mission-item glass-effect" onclick="StillNotFound()">
+                     <div class="icon-wrapper"><img src="Earth1.jpg" class="orbit-img" alt=""></div>
+                      <h3>Planet <br>Earth</h3>
+                      <span>20.4.2023</span>
+                    </div>
+                     <div class="mission-item glass-effect" onclick="moon()">
+                       <div class="icon-wrapper"><img src="moon.jpg" class="orbit-img" alt=""></div>
+                         <h3>Planet<br> Moon</h3>
+                         <span>20.4.2023</span>
+                    </div>
+                        <div class="mission-item glass-effect" onclick="StillNotFound()">
+                          <div class="icon-wrapper"><img src="pngwing.com (3).png" class="orbit-img" width="130px" alt=""></div>
+                            <h3>Planet<br> Sun <br></h3>
+                           <span>20.4.2023</span>
+                       </div>
+                             <div class="mission-item glass-effect" onclick="StillNotFound()">
+                               <div class="icon-wrapper"><img src="pngwing.com (4).png" class="orbit-img" alt=""></div>
+                                <h3>Planet Mercury</h3>
+                                <span>20.4.2023</span>
+                            </div>
+                <div class="mission-item glass-effect" onclick="StillNotFound()">
+                 <div class="icon-wrapper"><img src="pngwing.com (5).png" class="orbit-img" alt=""></div>
+                    <h3>Planet Neuptun</h3>
+                    <span>20.4.2023</span>
+                </div>
+            <div class="mission-item glass-effect" onclick="Mars()">
+                <div class="icon-wrapper"><img src="Mars03.jpg" class="orbit-img" alt=""></div>
+                 <h3>Planet <br>Mars</h3>
+                <span>20.4.2023</span>
+            </div>
+                    <div class="mission-item glass-effect" onclick="StillNotFound()">
+                    <div class="icon-wrapper"><img src="pngwing.com (7).png" class="orbit-img" alt=""></div>
+                    <h3>Planet<br> Jupiter</h3>
+                    <span>20.4.2023</span>
+                   </div>
+                    
+                    <div class="mission-item glass-effect" onclick="StillNotFound()">
+                    <div class="icon-wrapper"><img src="pngwing.com (9).png" class="orbit-img" alt=""></div>
+                    <h3>Planet<br>Uranus</h3>
+                    <span>20.4.2023</span>
+                   </div>
+                                       <div class="mission-item glass-effect" onclick="redirect()">
+                    <div class="icon-wrapper"><img src="pngwing.com (10).png" class="orbit-img" alt=""></div>
+                    <h3>Explore<br>Space</h3>
+                    <span>20.4.2023</span>
+                   </div>
+
+     </div>
+   </section>
+   
+</body>
+</html>
