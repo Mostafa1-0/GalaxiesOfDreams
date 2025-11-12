@@ -1,10 +1,11 @@
-<!doctype html>
-<html lang="ar">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Space Explorer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Explorer - Moon</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
     html,body{
       height:100%;
       margin:0;
@@ -46,18 +47,33 @@
   </style>
 </head>
 <body>
-  <div id="controls">
-    <button onclick="viewer.viewport.zoomBy(1.2);viewer.viewport.applyConstraints();">🔍 +</button>
-    <button onclick="viewer.viewport.zoomBy(0.8);viewer.viewport.applyConstraints();">🔍 -</button>
-    <button onclick="viewer.setFullScreen(!viewer.isFullPage());">⛶Full screen</button>
-    <div id="zoom-level">Zoom: 100%</div>
-  </div>
-  <div id="viewer"></div>
+    <header>
+        <div class="logo">
+            <i class="fas fa-satellite"></i>
+            <span>Galaxies Of Dreams</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="reciver.html">Services</a></li>
+                <li><a href="Earth.html">Earth</a></li>
+                <li><a href="Mars.html">Mars</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- مكتبة OpenSeadragon -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
+    <div id="controls">
+        <button onclick="viewer.viewport.zoomBy(1.2);viewer.viewport.applyConstraints();">🔍 +</button>
+        <button onclick="viewer.viewport.zoomBy(0.8);viewer.viewport.applyConstraints();">🔍 -</button>
+        <button onclick="viewer.setFullScreen(!viewer.isFullPage());">⛶Full screen</button>
+        <div id="zoom-level">Zoom: 100%</div>
+    </div>
+    <div id="viewer"></div>
 
-  <script>
+    <!-- مكتبة OpenSeadragon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
+
+    <script>
     // إعداد العارض
     const viewer = OpenSeadragon({
       id: "viewer",
@@ -91,5 +107,11 @@
       document.getElementById("zoom-level").innerText = "Zoom: " + percentage + "%";
     });
   </script>
+
+    <footer>
+        <p>&copy; 2024 SPACE. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>

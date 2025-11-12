@@ -1,9 +1,10 @@
-<!
+<!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="utf-8">
   <title>Space Explorer - Earth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../style.css">
   <style>
     html,body{
       height:100%;
@@ -46,45 +47,67 @@
   </style>
 </head>
 <body>
-  <div id="controls">
-    <button onclick="viewer.viewport.zoomBy(1.2);viewer.viewport.applyConstraints();">🔍 +</button>
-    <button onclick="viewer.viewport.zoomBy(0.8);viewer.viewport.applyConstraints();">🔍 -</button>
-    <button onclick="viewer.setFullScreen(!viewer.isFullPage());">⛶Full screen</button>
-    <div id="zoom-level">Zoom: 100%</div>
-  </div>
-  <div id="viewer"></div>
+    <header>
+        <div class="logo">
+            <i class="fas fa-satellite"></i>
+            <span>Galaxies Of Dreams</span>
+        </div>
+        <nav>
+            <ul></ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="reciver.html">Services</a></li>
+                <li><a href="Mars.html">Mars</a></li>
+                <li><a href="Moon.html">Moon</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- مكتبة OpenSeadragon -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
+    <main>
+        <div id="controls">
+            <button onclick="viewer.viewport.zoomBy(1.2);viewer.viewport.applyConstraints();">🔍 +</button>
+            <button onclick="viewer.viewport.zoomBy(0.8);viewer.viewport.applyConstraints();">🔍 -</button>
+            <button onclick="viewer.setFullScreen(!viewer.isFullPage());">⛶Full screen</button>
+            <div id="zoom-level">Zoom: 100%</div>
+        </div>
+        <div id="viewer"></div>
+    </main>
 
-  <script>
-    // إعداد العارض
-    const viewer = OpenSeadragon({
-      id: "viewer",
-      prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
-      // صورة الأرض عالية الدقة
-      tileSources: {
-        type: 'image',
-        url: 'https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74192/world.topo.bathy.200412.3x5400x2700.jpg'
-      },
-      showNavigator: true,
-      navigatorPosition: "BOTTOM_RIGHT",
-      showRotationControl: true,
-      gestureSettingsMouse: {
-        scrollToZoom: true,
-        clickToZoom: false
-      },
-      animationTime: 0.6,
-      maxZoomPixelRatio: 3,
-      constrainDuringPan: true,
-    });
+    <footer>
+        <p>&copy; 2024 SPACE. All rights reserved.</p>
+    </footer>
 
-    // تحديث نسبة الزوم
-    viewer.addHandler("zoom", function(){
-      const zoom = viewer.viewport.getZoom();
-      const percentage = (zoom * 100).toFixed(0);
-      document.getElementById("zoom-level").innerText = "Zoom: " + percentage + "%";
-    });
-  </script>
+    <!-- مكتبة OpenSeadragon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
+
+    <script>
+      // إعداد العارض
+      const viewer = OpenSeadragon({
+        id: "viewer",
+        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+        // صورة الأرض عالية الدقة
+        tileSources: {
+          type: 'image',
+          url: 'https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74192/world.topo.bathy.200412.3x5400x2700.jpg'
+        },
+        showNavigator: true,
+        navigatorPosition: "BOTTOM_RIGHT",
+        showRotationControl: true,
+        gestureSettingsMouse: {
+          scrollToZoom: true,
+          clickToZoom: false
+        },
+        animationTime: 0.6,
+        maxZoomPixelRatio: 3,
+        constrainDuringPan: true,
+      });
+
+      // تحديث نسبة الزوم
+      viewer.addHandler("zoom", function(){
+        const zoom = viewer.viewport.getZoom();
+        const percentage = (zoom * 100).toFixed(0);
+        document.getElementById("zoom-level").innerText = "Zoom: " + percentage + "%";
+      });
+    </script>
+    <script src="../script.js"></script>
 </body>
 </html>

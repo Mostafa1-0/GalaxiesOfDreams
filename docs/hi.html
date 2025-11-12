@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OpenSeadragon Demo</title>
+  <link rel="stylesheet" href="../style.css">
   <style>
     body { margin: 0; background:#0b1220; color:#fff; font-family: sans-serif; }
     #viewer { width: 100vw; height: 100vh; }
@@ -15,6 +16,21 @@
   <script src="https://unpkg.com/openseadragon@4.1.0/build/openseadragon/openseadragon.min.js"></script>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-satellite"></i>
+            <span>Galaxies Of Dreams</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="reciver.html">Services</a></li>
+                <li><a href="Mars.html">Mars</a></li>
+                <li><a href="Moon.html">Moon</a></li>
+            </ul>
+        </nav>
+    </header>
+
   <div class="toolbar">
     <button class="btn" id="zoomIn">+</button>
     <button class="btn" id="zoomOut">−</button>
@@ -73,5 +89,11 @@
       // console.log('clicked at (relative):', imgPoint);
     });
   </script>
+
+    <footer>
+        <p>&copy; 2024 SPACE. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>

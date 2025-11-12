@@ -2,8 +2,9 @@
 <html lang="ar">
 <head>
   <meta charset="utf-8">
-  <title>Space Explorer</title>
+  <title>Space Explorer - Mars</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../style.css">
   <style>
     html,body{
       height:100%;
@@ -46,6 +47,21 @@
   </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-satellite"></i>
+            <span>Galaxies Of Dreams</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="reciver.html">Services</a></li>
+                <li><a href="Earth.html">Earth</a></li>
+                <li><a href="Moon.html">Moon</a></li>
+            </ul>
+        </nav>
+    </header>
+
   <div id="controls">
     <button onclick="viewer.viewport.zoomBy(1.2);viewer.viewport.applyConstraints();">🔍 +</button>
     <button onclick="viewer.viewport.zoomBy(0.8);viewer.viewport.applyConstraints();">🔍 -</button>
@@ -91,5 +107,11 @@
       document.getElementById("zoom-level").innerText = "Zoom: " + percentage + "%";
     });
   </script>
+
+    <footer>
+        <p>&copy; 2024 SPACE. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>
