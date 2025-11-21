@@ -3,33 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Explorer - Receiver</title>
+    <title>Galaxies Of Dreams</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;770&family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function alert(){
+            swal("Sorry", "The video is not avilable", "error");
+        }
+        function redirect(){
+           window.open("hi.html", "mozillaTab");
+        }
+        function StillNotFound(){
+            swal("We are sorry", "The feature that you are seeking  is under development right now", "error");
+        }
+        function Moon(){
+            window.open("Moon.html","mozillaTab")
+        }
+        function Earth(){
+            window.open("Earth.html","mozillaTab")
+        }
+        function Mars(){
+            window.open("Mars.html","mozillaTab")
+        }
+    </script>
+    <style>
+        *{scroll-behavior: smooth;}/* General Body & Typography */
+        body {
+            font-family: 'Oxanium', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0c0c20;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            }
+            .orbits{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .orbit-img{
+                width: 140px;
+            }
+            /* Add to your existing style.css file */
+
+/* General Responsive Styles */
+/* Add this to your existing style.css file */
+
+/* Ensure the main container wraps its content */
+.orbits {
+    display: flex;
+    flex-wrap: wrap; /* This is the key change */
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Adjust the card width for larger screens */
+.mission-item {
+    width: 200px; /* Default width for cards */
+    flex-grow: 1; /* Allows the items to grow to fill space */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 992px) {
+    .mission-item {
+        /* Set a specific width to allow multiple cards per row */
+        width: calc(25% - 20px); /* Adjusts width to fit 4 cards per row with gap */
+        max-width: 250px; /* Prevents cards from getting too big on very wide screens */
+    }
+}
+
+/* Media Query for Tablets */
+@media (max-width: 991px) and (min-width: 768px) {
+    .mission-item {
+        width: calc(33.333% - 20px); /* Fits 3 cards per row */
+    }
+}
+
+/* Media Query for Mobile Phones (already in the previous code but confirmed here) */
+@media (max-width: 767px) {
+    .orbits {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mission-item {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+    </style>
 </head>
 <body>
-    <header>
+   <header>
         <div class="logo">
             <i class="fas fa-satellite"></i>
             <span>Galaxies Of Dreams</span>
         </div>
+      <nav class="right">
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="Earth.html">Earth</a></li>
-                <li><a href="Mars.html">Mars</a></li>
-                <li><a href="Moon.html">Moon</a></li>
+                <li><a href="reciver.html">Services</a></li>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html">Contact</a></li>
+                <li><a href="#" class="btn-outline">Sign In</a></li>
             </ul>
         </nav>
-    </header>
+      </nav>
+            <label class="switch" id="theme-toggle">
+  <span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg></span>
+  <span class="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg></span>   
+  <input type="checkbox" class="input">
+  <span class="slider"></span>
+</label>
+   </header> 
+   <section class="hero">
+    <h2>Explore what orbit you want to see in details</h2>
+     <div class="orbits">
+                    <div class="mission-item glass-effect" onclick="Earth()">
+                     <div class="icon-wrapper"><img src="ImgFold/Earth.png" class="orbit-img" alt=""></div>
+                      <h3>Planet <br>Earth</h3>
+                      <span>20.4.2023</span>
+                    </div>
+                     <div class="mission-item glass-effect" onclick="Moon()">
+                       <div class="icon-wrapper"><img src="ImgFold/Moon2.png" class="orbit-img" alt=""></div>
+                         <h3>Planet<br> Moon</h3>
+                         <span>20.4.2023</span>
+                    </div>
+                        <div class="mission-item glass-effect" onclick="StillNotFound()">
+                          <div class="icon-wrapper"><img src="ImgFold/Sun.png" class="orbit-img" width="130px" alt=""></div>
+                            <h3>Star<br> Sun <br></h3>
+                           <span>20.4.2023</span>
+                       </div>
+                             <div class="mission-item glass-effect" onclick="StillNotFound()">
+                               <div class="icon-wrapper"><img src="ImgFold/MercuryP.png" class="orbit-img" alt=""></div>
+                                <h3>Planet Mercury</h3>
+                                <span>20.4.2023</span>
+                            </div>
+                <div class="mission-item glass-effect" onclick="StillNotFound()">
+                 <div class="icon-wrapper"><img src="ImgFold/Neptune.png" class="orbit-img" alt=""></div>
+                    <h3>Planet Neuptun</h3>
+                    <span>20.4.2023</span>
+                </div>
+            <div class="mission-item glass-effect" onclick="Mars()">
+                <div class="icon-wrapper"><img src="ImgFold/Mars.png" class="orbit-img" alt=""></div>
+                 <h3>Planet <br>Mars</h3>
+                <span>20.4.2023</span>
+            </div>
+                    <div class="mission-item glass-effect" onclick="StillNotFound()">
+                    <div class="icon-wrapper"><img src="ImgFold/jupitur.png" class="orbit-img" alt=""></div>
+                    <h3>Planet<br> Jupiter</h3>
+                    <span>20.4.2023</span>
+                   </div>
+                    
+                    <div class="mission-item glass-effect" onclick="StillNotFound()">
+                    <div class="icon-wrapper"><img src="ImgFold/Uranus.png" class="orbit-img" alt=""></div>
+                    <h3>Planet<br>Uranus</h3>
+                    <span>20.4.2023</span>
+                   </div>
+                                       <div class="mission-item glass-effect" onclick="redirect()">
+                    <div class="icon-wrapper"><img src="ImgFold/Space.png" class="orbit-img" alt=""></div>
+                    <h3>Explore<br>Space</h3>
+                    <span>20.4.2023</span>
+                   </div>
 
-    <main>
-        <h1>Welcome to the Receiver Page</h1>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 SPACE. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+     </div>
+   </section>
+   <script src="theme-changer.js"></script>
 </body>
+
 </html>
